@@ -1,0 +1,336 @@
+.main__container {
+    width: 630px;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    color: #8f8f8f;
+}
+
+.main__title {
+    height: 61px;
+    width: 318px;
+    margin-bottom: 25px;
+    font-size: 45px;
+    line-height: 61px;
+    letter-spacing: 2.799999952316284px;
+    color: #ffffff;
+}
+
+.main__title-bold {
+    font-weight: 800;
+}
+
+.login__form {
+    width: 630px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.input__wrap {
+    height: 84px;
+}
+
+.input__container {
+    width: 332px;
+    height: 52px;
+    border: 1px solid #8f8f8f;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: row;
+}
+
+.input__username-input, .input__password-input{
+    border: 0px;
+    background-color: #303030;
+    color: #8f8f8f;
+    padding-left: 20px;
+    outline: none;
+}
+
+.input__password-input {
+    flex-grow: 2;
+}
+
+.input__icon-box {
+    width: 53px;
+    height: 52px;
+    fill: #d1d1d1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right: 1px solid #8f8f8f;
+}
+
+.input__showpass-button {
+    border: 1px #8f8f8f;
+    width: 52px;
+    height: 52px;
+    fill: #d1d1d1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.hidepass-button {
+    display: none;
+}
+
+.input__container:focus-within {
+    border: 1px solid #FFFFFF;
+}
+
+.input__container:focus-within > .input__icon-box {
+    border-right: 1px solid #FFFFFF;
+    fill: #ffffff;
+}
+
+.input__username-input:focus, .input__username-input:active {
+    color: #ffffff;
+}
+
+.input__container:active {
+    border-color: #ffffff;
+}
+
+.input__container:active > .input__username-input{
+    color:#ffffff;
+}
+
+.input__container:active > .input__icon-box > img {
+    fill:#ffffff;
+}
+
+.login__remember {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-between;
+    width: 331px;
+    padding-top: 15px;
+}
+
+.login__submit-button{
+    background: linear-gradient(180deg, #7CD235 0%, #2BB34F 100%);
+    border: 0px;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: 0px;
+    text-align: center;
+    color: #FFFFFF;
+    width: 100px;
+    height: 40px;
+}
+
+.login__submit-button:hover{
+    background: #7CD235;
+}
+
+.login__submit-button:active {
+    background: linear-gradient(180deg, #7CD235 0%, #2BB34F 100%);
+    box-shadow: inset 0px 4px 4px rgba(43, 179, 79, 0.63);
+}
+
+.login__submit-button:focus {
+    border: 1px solid #FFFFFF;
+    outline: none;
+}
+
+.login__remember-box {
+    display:flex;
+    width: 140px;
+    height: 20px;
+    align-items: baseline;
+}
+
+/* hide the checkbox */
+.cb input{
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.cb {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.cb p {
+    width: 120px;
+    height: 19px;
+    font-size: 14px;
+    margin: 0;
+    padding-left: 10px;
+}
+
+.cb input:checked + .checkmark {
+    background-color: #7CD235;
+    background-image: url(/img/icons/checked.svg);
+    background-repeat: no-repeat;
+    background-size: 12px;
+    background-position: center
+}
+
+.checkmark {
+    border: 1px solid #8f8f8f;
+    border-radius: 4px;
+    width: 20px;
+    height: 20px;
+}
+
+.cb input:focus-within + .checkmark {
+    border: 1px solid #FFFFFF;
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.cb input:checked .checkmark:after {
+    display: block;
+}
+
+.cb .checkmark:after {
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+
+.login__register {
+    width: 331px;
+    height: 19px;
+    display: flex;
+    justify-content: space-between;
+    margin: 15px 0px;
+    flex-wrap: wrap;
+}
+
+.login__register p {
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.login__separator {
+    height: 16px;
+    width: 329px;
+    display: flex;
+    flex-direction: row;
+    color: #ffffff;
+    margin-top: 6px;
+    margin-bottom: 0;
+}
+ 
+.login__separator p {
+    color: #FFFFFF;
+    width: 61px;
+    height: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} 
+
+.login__separator-line {
+    border: 1px solid;
+    background-color: #FFFFFF;
+    width: 134px;
+    margin-top: 10px;
+    margin-bottom: 4px;
+} 
+
+.login__social {
+    margin-top: 21px;
+    margin-bottom: 31px;
+}
+.login__social-fb, .login__social-tw, .login__social-g {
+    width: 240px;
+    height: 40px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 24px;
+    cursor: pointer;
+}
+
+.login__social-fb p, .login__social-tw p, .login__social-g p {
+    font-weight: 700;
+    font-size: 12px;
+    text-align: center;
+    color:#FFFFFF;
+    line-height: 16px;
+    margin: 0;
+    flex-grow: 2;
+}
+
+.login__social-fb {
+    background-color: #3B5998;
+}
+
+.login__social-tw {
+    background-color: #00ACED;
+}
+
+.login__social-g {
+    background-color: #C7C7C7;
+}
+
+.facebook__icon {
+    width: 46.55px;
+    height: 40px;
+    background: #263C68;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px 0px 0px 8px;
+}
+
+.twitter__icon {
+    width: 46.55px;
+    height: 40px;
+    background: #0695CB;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px 0px 0px 8px;  
+}
+
+.google__icon {
+    width: 46.55px;
+    height: 40px;
+    background: #9D9D9D;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px 0px 0px 8px;  
+}
+
+#login__carousel {
+    width: 453 px;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    background-color: #00aced;
+    border-radius: 0px 10px 10px 0px;
+    overflow: hidden;
+}
+
+.error-message {
+    display: none;
+    color:#D24040;
+    height: 19px;
+    margin: 7px 0 6px 0;
+
+}
