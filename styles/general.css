@@ -14,7 +14,7 @@ body {
     background-color: #303030;
 }
 
-.main__wrap {
+.login__wrap {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -28,7 +28,7 @@ body {
     .login__carousel {
         display: none;
     }
-    .main__container {
+    .login__container {
         width: 100%;
         height: 100%;
         box-sizing: border-box;
@@ -40,7 +40,7 @@ body {
     .login__carousel {
         display: none;
     }
-    .main__container {
+    .login__container {
         width: 100%;
         height: 100%;
         box-sizing: border-box;
@@ -52,7 +52,7 @@ body {
     .login__carousel {
         display: inline;
     }
-    .main__wrap {
+    .login__wrap {
         width: 100%;
     }
 }
