@@ -159,6 +159,12 @@ label {
     margin-left: 10px;
 }
 
+.login__remember-box {
+    display:flex;
+    width: 140px;
+    height: 20px;
+}
+
 /* -------------------- Button States --------------------*/
 
 .login__submit-button:hover{
@@ -175,12 +181,6 @@ label {
     outline: none;
 }
 
-.login__remember-box {
-    display:flex;
-    width: 140px;
-    height: 20px;
-}
-
 /* -------------------- Checkbox --------------------*/
 
 #checkbox-input {
@@ -192,15 +192,15 @@ label {
     border-radius: 4px;
     display: inline-block;
     position: relative;
-    cursor: pointer;
+    cursor: pointer; 
 }
 
 #checkbox-input:checked {
     background-color: var(--green);
-    background-image: url("..\img\icons\checked.svg");
+    background-image: url("../img/icons/checked.svg");
     background-position: center;
     background-repeat: no-repeat;
-    border: none;
+    border: none; 
 }
 
 #checkbox-input:focus {
