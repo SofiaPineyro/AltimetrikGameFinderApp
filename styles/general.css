@@ -1,5 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600,300,800,700);
-
+@import "colours.css";
 *, *::after, *::before {
     margin: 0;
     padding: 0;
@@ -11,7 +11,7 @@ body {
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
-    background-color: #303030;
+    background-color: var(--dark-grey);
 }
 
 .login__wrap {
