@@ -22,6 +22,8 @@
     height: 660px;
 }
 
+/* -------------------- TITLE --------------------*/
+
 .main__title {
     height: 61px;
     width: 318px;
@@ -36,6 +38,8 @@
     font-weight: 800;
 }
 
+/* -------------------- Form --------------------*/
+
 .login__form {
     width: 630px;
     display: flex;
@@ -49,6 +53,8 @@
 .input__wrap {
     height: 84px;
 }
+
+/* -------------------- Username and Password --------------------*/
 
 .input__container {
     width: 332px;
@@ -73,7 +79,7 @@
 
 .input__icon-box {
     width: 53px;
-    height: 52px;
+    height: 50px;
     fill: var(--lighter-grey);
     display: flex;
     justify-content: center;
@@ -92,6 +98,8 @@
     cursor: pointer;
 }
 
+/* -------------------- Username and Password States --------------------*/
+
 .input__container:focus-within {
     border: 1px solid var(--white);
 }
@@ -101,7 +109,12 @@
     fill: var(--white);
 }
 
-.input__username-input:focus, .input__username-input:active {
+.input__container:focus-within > .input__icon-box svg path {
+    fill: var(--white);    
+}
+
+.input__username-input:focus, .input__username-input:active,
+.input__password-input:focus, .input__password-input:active  {
     color: var(--white);
 }
 
@@ -113,9 +126,11 @@
     color:var(--white);
 }
 
-.input__container:active > .input__icon-box > img {
+.input__container:active > .input__icon-box svg path {
     fill:var(--white);
 }
+
+/* -------------------- Remember me and Submit Button --------------------*/
 
 .login__remember {
     display: flex;
@@ -140,6 +155,12 @@
     height: 40px;
 }
 
+label {
+    margin-left: 10px;
+}
+
+/* -------------------- Button States --------------------*/
+
 .login__submit-button:hover{
     background: var(--green);
 }
@@ -159,6 +180,8 @@
     width: 140px;
     height: 20px;
 }
+
+/* -------------------- Checkbox --------------------*/
 
 #checkbox-input {
     appearance: none;
@@ -185,9 +208,7 @@
     border: 1px solid var(--white);
 }
 
-label {
-    margin-left: 10px;
-}
+/* -------------------- Register and Forgot Password --------------------*/
 
 .login__register {
     width: 331px;
@@ -202,6 +223,8 @@ label {
     color: var(--white);
     cursor: pointer;
 }
+
+/* -------------------- Separator --------------------*/
 
 .login__separator {
     height: 16px;
@@ -229,6 +252,8 @@ label {
     margin-top: 10px;
     margin-bottom: 4px;
 } 
+
+/* -------------------- Social links --------------------*/
 
 .login__social {
     margin-top: 21px;
@@ -306,6 +331,8 @@ label {
     overflow: hidden;
 } */
 
+/* -------------------- Errors and hidden --------------------*/
+
 .error-message {
     color: var(--light-red);
     height: 19px;
@@ -325,10 +352,10 @@ label {
 /* -------------------- Snackbars --------------------*/
 
 .snackbar {
-    width: 100%;
+    width: 90%;
     height: 40px;
+    margin-left: 5px;
     box-shadow: 0px 1px 3px 0px;
-    line-height: 19px;
     font-size: 14px;
     color: var(--white);
     justify-content: space-between;
@@ -336,11 +363,20 @@ label {
     align-items: center;
     position: absolute;
     transition: all 0.5s;
+    z-index: 1;
 }
 
 .snackbar img {
     width: 16px;
     cursor: pointer;
+    height: 16px;
+    width: 16px;
+}
+
+.snackbar p {
+    height: 19px;
+    margin-bottom: 10px;
+    margin-top: 11 px;
 }
 
 .snackbar.success{
@@ -351,4 +387,8 @@ label {
 }
 .snackbar.error{
     background-color: var(--red);
+}
+
+.snackbar__show {
+    display:flex;
 }
