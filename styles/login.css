@@ -1,18 +1,7 @@
-:root {
-    --dark-grey: #303030;
-    --white: #FFFFFF;
-    --light-grey: #8F8F8F;
-    --lighter-grey: #D1D1D1;
-    --green: #7CD235;
-    --dark-green: #2BB34F;
-    --light-red: #E07979;
-    --red: #ED7474;
-    --orange: #EDAE74;
-    --light-green: #88DA44;
-}
+@import "colors.css";
 
 .login__container {
-    color: var(--light-grey);
+    color: var(grey);
     max-width: 100vw;
     display: flex;
     align-items: center;
@@ -59,7 +48,7 @@
 .input__container {
     width: 332px;
     height: 52px;
-    border: 1px solid var(--light-grey);
+    border: 1px solid var(grey);
     border-radius: 8px;
     display: flex;
     flex-direction: row;
@@ -68,7 +57,7 @@
 .input__username-input, .input__password-input{
     border: 0px;
     background-color: var(--dark-grey);
-    color: var(--light-grey);
+    color: var(grey);
     padding-left: 20px;
     outline: none;
 }
@@ -80,18 +69,18 @@
 .input__icon-box {
     width: 53px;
     height: 50px;
-    fill: var(--lighter-grey);
+    fill: var(--light-grey);
     display: flex;
     justify-content: center;
     align-items: center;
-    border-right: 1px solid var(--light-grey);
+    border-right: 1px solid var(grey);
 }
 
 .input__showpass-button {
-    border: 1px var(--light-grey);
+    border: 1px var(grey);
     width: 52px;
     height: 52px;
-    fill: var(--lighter-grey);
+    fill: var(--light-grey);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -186,7 +175,7 @@ label {
 #checkbox-input {
     appearance: none;
     background-color: transparent;
-    border: 1px solid var(--light-grey);
+    border: 1px solid var(grey);
     width: 20px;
     height: 20px;
     border-radius: 4px;
