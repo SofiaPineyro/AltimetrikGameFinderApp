@@ -101,6 +101,3 @@ const login = async function(email,password) {
         document.getElementById("snackbar-text").innerHTML = "Error, please try again.";
     }
 }
-
-//cuando hay un snackbar agregarle style="display=flex" y remove class hidden
-// y ademas agregarle a p el texto que sea.
