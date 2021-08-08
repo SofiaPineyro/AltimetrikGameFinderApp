@@ -12,7 +12,7 @@
     </head>
     <body>
         <main>
-            <div class="d-flex justify-content-center">
+            <!-- <div class="d-flex justify-content-center"> -->
                 <div class="main__wrap">
                     <div class="main__container">
                         <h1 class="main__title">GAME<span class="main__title-bold">FINDER</span></h1>
@@ -27,7 +27,7 @@
                                     </div>
                                     <input type="text" class="input__username-input" id="username" placeholder="Email">
                                     </div>
-                                <p class="error-message" id="error-user">Enter a valid email</p>
+                                <p class="error-message hidden" id="error-user">Enter a valid email</p>
                             </div>
                             <div class="input__wrap">
                                 <div class="input__container">
@@ -38,11 +38,11 @@
                                     </div>
                                     <input type="password" class="input__password-input" id="password" placeholder="Password" >
                                     <div class="input__showpass-button" onclick="showPassword()">
-                                        <svg class="showpass-button" id="showpass-button"" width="20" height="14" viewBox="0 0 20 14">
+                                        <svg id="showpass-button" width="20" height="14" viewBox="0 0 20 14">
                                             <path d="M13.125 6.875C13.125 7.7038 12.7958 8.49866 12.2097 9.08471C11.6237 9.67076 10.8288 10 10 10C9.1712 10 8.37634 9.67076 7.79029 9.08471C7.20424 8.49866 6.875 7.7038 6.875 6.875C6.875 6.0462 7.20424 5.25134 7.79029 4.66529C8.37634 4.07924 9.1712 3.75 10 3.75C10.8288 3.75 11.6237 4.07924 12.2097 4.66529C12.7958 5.25134 13.125 6.0462 13.125 6.875Z"/>
                                             <path d="M0 6.875C0 6.875 3.75 0 10 0C16.25 0 20 6.875 20 6.875C20 6.875 16.25 13.75 10 13.75C3.75 13.75 0 6.875 0 6.875ZM10 11.25C11.1603 11.25 12.2731 10.7891 13.0936 9.96859C13.9141 9.14812 14.375 8.03532 14.375 6.875C14.375 5.71468 13.9141 4.60188 13.0936 3.78141C12.2731 2.96094 11.1603 2.5 10 2.5C8.83968 2.5 7.72688 2.96094 6.90641 3.78141C6.08594 4.60188 5.625 5.71468 5.625 6.875C5.625 8.03532 6.08594 9.14812 6.90641 9.96859C7.72688 10.7891 8.83968 11.25 10 11.25Z"/>
-                                        </svg> 
-                                        <svg class="hidepass-button" id="hidepass-button" width="20" height="14" viewBox="0 0 20 14">
+                                        </svg>
+                                        <svg class="hidden" id="hidepass-button" width="20" height="14" viewBox="0 0 20 14">
                                             <g>
                                                 <path class="st0" d="M10,0C8.5,0,7.1,0.4,5.9,1l2,2C8.6,2.7,9.3,2.5,10,2.5c1.2,0,2.3,0.5,3.1,1.3c0.8,0.8,1.3,1.9,1.3,3.1
                                                     c0,0.7-0.2,1.4-0.5,2.1l2.4,2.4c2.4-2,3.8-4.4,3.8-4.4S16.2,0,10,0z"/>
@@ -56,22 +56,14 @@
                                         </svg>
                                     </div>
                                 </div>
-                                <p class="error-message" id="error-password">Enter a valid password</p>
+                                <p class="error-message hidden" id="error-password">Enter a valid password</p>
                             </div>
                             <div class="login__remember">
                                 <div class="login__remember-box">
-                                    <label class="cb">
-                                        <input type="checkbox">
-                                        <span class="checkmark">
-                                            <svg class="checked-icon" width="12" height="8" viewBox="0 0 12 8" fill="white">
-                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M11.6796 0.293656C11.7812 0.386506 11.8617 0.496808 11.9167 0.618244C11.9717 0.739681 12 0.869864 12 1.00134C12 1.13282 11.9717 1.263 11.9167 1.38444C11.8617 1.50587 11.7812 1.61617 11.6796 1.70902L5.13595 7.70634C5.03465 7.79943 4.9143 7.87328 4.7818 7.92367C4.6493 7.97406 4.50726 8 4.3638 8C4.22035 8 4.07831 7.97406 3.94581 7.92367C3.81331 7.87328 3.69296 7.79943 3.59165 7.70634L0.319835 4.70768C0.218435 4.61475 0.138 4.50442 0.0831224 4.383C0.0282451 4.26157 0 4.13143 0 4C0 3.86857 0.0282451 3.73843 0.0831224 3.617C0.138 3.49558 0.218435 3.38525 0.319835 3.29232C0.524622 3.10463 0.802372 2.99918 1.09198 2.99918C1.23539 2.99918 1.37738 3.02507 1.50987 3.07537C1.64236 3.12566 1.76273 3.19938 1.86413 3.29232L4.3638 5.58529L10.1353 0.293656C10.2366 0.200571 10.357 0.126719 10.4895 0.0763285C10.6219 0.0259381 10.764 0 10.9074 0C11.0509 0 11.1929 0.0259381 11.3254 0.0763285C11.4579 0.126719 11.5783 0.200571 11.6796 0.293656Z" fill="white"/>
-                                            </svg>                                                
-                                        </span>
-                                        <p>Remember me</p>
-                                        </span>
-                                    </label>
+                                    <input type="checkbox" value="" id="checkbox-input">
+                                    <label for="checkbox-input">Remember me</label>
                                 </div>
-                                <button id="login" type="submit" class="login__submit-button">LOGIN</button>
+                                <button onclick="loginValidation()" class="login__submit-button">LOGIN</button>
                             </div>
                             <div class="login__register">
                                 <p>Register now</p>
@@ -147,7 +139,7 @@
                         </div>
                     </div>
                 </div>
-            <!-- </div>
+            <!-- </div> -->
         </main>
     </body>
 </html>

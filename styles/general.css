@@ -14,15 +14,13 @@ body {
     background-color: #303030;
 }
 
-main {
-    align-items: flex-start;
-}
-
 .main__wrap {
-    height: 660px;
-    width: 1083px;
     display: flex;
     justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    
 }
 
 /* Mobile */
