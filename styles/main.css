@@ -2,15 +2,23 @@
 
 body {
     background-color: var(--black);
+    width: 100%;
 }
 
 header {
+    background: linear-gradient(180deg, var(--green) 0%, var(--dark-green) 100%);
     display: flex;
-    padding: 40.75px 40px 40.75px 42.25px;
+    flex-direction: column;
+    height: 120px;
+    width: 100%;
+    box-shadow: 1px -3px 36px rgb(0 0 0 / 50%);
+}
+
+.header__container {
+    display: flex;
+    padding: 32px 40px 0px 42.25px;
     justify-content: space-between;
     align-items: center;
-    height: 22.5px;
-    background: linear-gradient(180deg, var(--green) 0%, var(--dark-green) 100%);
 }
 
 .header__options {
@@ -24,52 +32,88 @@ header {
     font-weight: 400;
     font-size: 28px;
     line-height: 38px;
-    letter-spacing: 1.74222px;
+    letter-spacing: 1.74px;
     color: var(--white);
 }
 
 .header__searchbar {
-    width: 23px;
-    height: 23px;
+    display: flex;
+    width: 362px;
+    height: 40px;
+    border-radius: 20px;
+    background-color: var(--lighter-grey);
 }
 
 .header__searchbar-input {
-    width: 362px;
-    height: 40px;
-    background: var(--lighter-grey);
-    border-radius: 20px;
-    font-weight: 300;
+    appearance: none;
+    font-family: inherit;
     font-size: 16px;
     color: var(--main-input-grey);
-    border: 0px;
+    font-weight: 300;
+    outline: none;
+    border: none;
+    width: 225px;
+    line-height: 22px;
+    height: 22px;
+    background-color: transparent;
+    margin-left: 22px;
+    margin-top: 9px;
+    margin-bottom: 9px;
+}
+
+.header__searchbar-icon {
+    margin-left: 20px;
+    margin-top: 13px;
+    margin-bottom: 11px;
+    width: 16px;
+    height: 16px;
+}
+
+.header__searchbar-icon path {
+    fill: var(--main-input-grey);
+}
+
+.header__user-container {
+    display: flex;
+    align-items: center;
 }
 
 .header__logout {
-
-}
-
-.header__logout-icon {
-
-}
-
-.header__user {
-
+    display: flex;
+    height: 19px;
+    width: 73px;
+    color: var(--white);
+    fill: var(--white);
+    justify-content: space-between;
+    line-height: 19px;
+    margin-right: 32px;
 }
 
 .header__user-photo {
+    width: 43.87px;
+    height: 45.33px;
+    border-radius: 50%;
+}
 
+.header__separator {
+    margin: 18px 40px 0px 40px;
+    border: none;
+    height: 1px;
+    color: var(--white);
+    background-color: var(--white);
 }
 
 .main__wrap {
-
+    display:flex;
 }
 
 aside {
     height: 100%;
+    width: 192px;
     background-color: var(--black);
     display: flex;
     flex-direction: column;
-    padding: 0px 22.25px 100px 30px;
+    padding: 33px 31px 100px 30px;
 }
 
 aside a {
@@ -90,6 +134,7 @@ aside a {
 }
 
 .sidebar__navigation {
+    width: 192px;
     color: var(--white);
     font-size: 22px;
     line-height: 30px;
@@ -114,15 +159,15 @@ aside a {
 }
 
 main {
-    
+    width: 100%;
 }
 
 .main__header {
-    margin-left: 40px;
-    margin-right: 40px;
-    margin-top: 24px;
+    width: 100%;
+    height: 144px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .main__header-headings {
@@ -132,19 +177,50 @@ main {
 
 .main__heading {
     font-weight: 800;
-    font-size: 45px;
+    font-size: 55px;
     color: var(--white);
-    width: 240px;
-    height: 100px;
-    line-height: 49.5px;
-    margin-bottom: 25px;
+    line-height: 75px;
 }
 
 .main__subheading {
     font-weight: 400;
     font-size: 18px;
+    line-height: 25px;
     color: var(--white);
-    width: 201px;
     height: 50px;
 }
+
+.main__header-buttons {
+    margin: 0px 40px 0px 24px;
+}
+
+.main__header-buttons input {
+    cursor: pointer;
+    appearance: none;
+    height: 40px;
+    width: 40px;
+    background-color: var(--dark-grey);
+    border-radius: 10px;
+}
+
+input[type="radio"]:checked {
+    background-color: var(--stone-dark-grey);
+}
+
+input[type="radio"]:hover {
+    background-color: #7D7D7D;
+}
+
+.main__show-row {
+    background-image: url("/GameFinder/img/icons/row.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.main__show-column {
+    background-image: url("/GameFinder/img/icons/column.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
 
