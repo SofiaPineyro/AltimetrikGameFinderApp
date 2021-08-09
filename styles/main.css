@@ -1,0 +1,150 @@
+@import "colours.css";
+
+body {
+    background-color: var(--black);
+}
+
+header {
+    display: flex;
+    padding: 40.75px 40px 40.75px 42.25px;
+    justify-content: space-between;
+    align-items: center;
+    height: 22.5px;
+    background: linear-gradient(180deg, var(--green) 0%, var(--dark-green) 100%);
+}
+
+.header__options {
+    width: 27.5px;
+    height: 22.5px;
+}
+
+.header-title {
+    width: 198px;
+    height: 38px;
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 38px;
+    letter-spacing: 1.74222px;
+    color: var(--white);
+}
+
+.header__searchbar {
+    width: 23px;
+    height: 23px;
+}
+
+.header__searchbar-input {
+    width: 362px;
+    height: 40px;
+    background: var(--lighter-grey);
+    border-radius: 20px;
+    font-weight: 300;
+    font-size: 16px;
+    color: var(--main-input-grey);
+    border: 0px;
+}
+
+.header__logout {
+
+}
+
+.header__logout-icon {
+
+}
+
+.header__user {
+
+}
+
+.header__user-photo {
+
+}
+
+.main__wrap {
+
+}
+
+aside {
+    height: 100%;
+    background-color: var(--black);
+    display: flex;
+    flex-direction: column;
+    padding: 0px 22.25px 100px 30px;
+}
+
+aside a {
+    cursor: pointer;
+}
+
+.sidebar__heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 32px;
+    margin-bottom: 81px;
+}
+
+.sidebar__navigation:hover, .sidebar__navigation:hover .navigation-icon {
+    fill: var(--green);
+    color: var(--green);
+}
+
+.sidebar__navigation {
+    color: var(--white);
+    font-size: 22px;
+    line-height: 30px;
+    height: 30px;
+    margin-bottom: 11px;
+}
+
+.enabled {
+    color: var(--green);
+}
+
+.spaced {
+    margin-bottom: 33px;
+}
+
+.logout {
+    margin-top: 29px;
+}
+
+.navigation-icon {
+    fill: var(--white);
+}
+
+main {
+    
+}
+
+.main__header {
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-top: 24px;
+    display: flex;
+    justify-content: center;
+}
+
+.main__header-headings {
+    display: flex;
+    flex-direction: column;
+}
+
+.main__heading {
+    font-weight: 800;
+    font-size: 45px;
+    color: var(--white);
+    width: 240px;
+    height: 100px;
+    line-height: 49.5px;
+    margin-bottom: 25px;
+}
+
+.main__subheading {
+    font-weight: 400;
+    font-size: 18px;
+    color: var(--white);
+    width: 201px;
+    height: 50px;
+}
+
