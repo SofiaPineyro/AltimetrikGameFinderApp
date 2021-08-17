@@ -20,14 +20,36 @@
         display: flex;
         justify-content: space-between;
     }
-    
-    .header__options {
-        display: block;
-    }
 
     .header__searchbar-mobile {
         display: block;
         margin-right: 40px;
+    }
+
+    aside {
+        min-width: 303px;
+        position: fixed;
+        height: 100%;
+        width: 100%;
+        z-index: 1;
+        padding-left: 31px;
+        transition: 0.5s;
+    }
+
+    aside.show-flex {
+        transition: 0.3s;
+        overflow-y: scroll;
+    }
+
+    .sidebar__heading {
+        display: flex;
+        justify-content: space-between;
+        margin-right: 23px;
+    }
+    
+    .aside__options {
+        display: flex;
+        margin-right: 23px;
     }
 
     main {
@@ -56,18 +78,36 @@
 
 /* Tablets */
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
-    .header__title, .header__logout, .header__searchbar-mobile, aside {
+    .header__title, .header__logout, .header__searchbar-mobile, aside, .aside__options {
         display: none;
     }
 
     .main__header-headings {
         margin: 24px 0 0 40px;
     }
+
+    aside {
+        min-width: 303px;
+        position: absolute;
+        left: -360px;
+        height: 100%;
+        transform: translateY(-120px);
+        background: var(--black);
+        box-shadow: 14px 0px 36px 5px rgba(0, 0, 0, 0.62);
+        transition: 0.5s;
+        z-index: 1;
+    }
+
+    aside.show-flex {
+        left: 0px;
+        transition: 0.5s;
+    }
 }
 
 /* Bigger screens */
 @media only screen and (min-width: 1024px) {
-    .header__options, .header__searchbar-mobile, .sidebar__heading {
+    .header__options, .header__searchbar-mobile, .sidebar__heading, .aside__options,
+    .sidebar__navigation.logout {
         display: none;
     }
 }

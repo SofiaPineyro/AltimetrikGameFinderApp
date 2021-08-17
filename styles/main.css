@@ -5,6 +5,10 @@ body {
     width: 100%;
 }
 
+.show-flex {
+    display: flex;
+}
+
 header {
     background: linear-gradient(180deg, var(--green) 0%, var(--dark-green) 100%);
     display: flex;
@@ -113,7 +117,12 @@ aside {
     background-color: var(--black);
     display: flex;
     flex-direction: column;
-    padding: 33px 31px 100px 30px;
+    padding: 33px 31px 0px 30px;
+}
+
+.aside__options {
+    width: 27.5px;
+    height: 22.5px;
 }
 
 aside a {
@@ -151,7 +160,8 @@ aside a {
 }
 
 .logout {
-    margin-top: 29px;
+    margin-top: auto;
+    margin-bottom: 100px;
 }
 
 .navigation-icon {
@@ -201,6 +211,7 @@ main {
     width: 40px;
     background-color: var(--dark-grey);
     border-radius: 10px;
+    margin-right: 24px;
 }
 
 input[type="radio"]:checked {
