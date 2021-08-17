@@ -44,6 +44,10 @@ function loginValidation(evt) {
         setError();
         document.getElementById("error-password").classList.remove("hidden");
     }
+    else if (email.length === 0) {
+        setError();
+        document.getElementById("error-user").classList.remove("hidden");
+    }
     else if(!validFormatEmail(email)) {
         setError();
         document.getElementById("error-user").classList.remove("hidden");
@@ -64,7 +68,7 @@ function validFormatEmail(email) {
 const login = async function(email,password) {
     try {
         fetch("http://localhost:3000/login", {
-            method: "POST",
+            method: "GET",
             headers: {
                 Accept: "application/json",
                 "Content-Type": "application/json",
@@ -82,7 +86,7 @@ const login = async function(email,password) {
             document.querySelector(".snackbar").classList.add("snackbar__show");
             document.querySelector(".snackbar").classList.add("success");
             document.getElementById("snackbar-text").innerHTML = "Success!";
-            window.location.href = "main.html";
+            //window.location.href = "main.html";
         }
         if(response.status === 400) {
             setError();
