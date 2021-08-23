@@ -104,6 +104,184 @@
         margin-top: 19px;
         padding: 0 21px 0 40px;
     }
+
+    /*Modal*/
+
+    .modal {
+        display: flex;
+        justify-content: center;
+        position: absolute;
+        top: 104px;
+        border-radius: 0px;
+        width: 100vw;
+        height: calc(100vh - 104px);
+    }
+
+    .modal .loading {
+        position: absolute;
+        left: calc(50% - 50px);
+    }
+
+    .modal__platforms {
+        margin-left: 2px;
+        margin-top: 31px;
+    }
+        
+    .modal__image {
+        border-radius: 0px;
+        width: auto;
+        min-width: 100vw;
+        height: 30%;
+    }
+
+    .modal__wrap {
+        grid-template-columns: 100%;
+        grid-template-areas: 
+        "content"
+        "description"
+        "review"
+        "images"
+        "details";
+        margin: 0;
+    }
+
+    .modal__container {
+        box-sizing: border-box;
+        padding-left: 30px;
+        padding-right: 30px;
+        overflow-y: auto;
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+
+    .modal__container h1 {
+        margin-top: 10px;
+        margin-left: 0px;
+        max-height: 216px;
+        font-size: 40px;
+        line-height: 54px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .modal-close {
+        width: 25px;
+        position: absolute;
+        right: 40px;
+        top: 26px;
+    }
+
+    .modal__content {
+        width: 100%;
+        margin-top: 35px;
+        display: grid;
+        grid-template-columns: 45% auto;
+        justify-content: space-between;
+        grid-template-areas: "info buttons";
+    }
+
+    .modal__info {
+        grid-area: info;
+        width: 100%;
+        text-align: center;
+        flex-direction: column;
+        margin-top: 0;
+    }
+
+    .modal__info span {
+        margin-right: 0px;
+        margin-bottom: 15px;
+        padding: 3px 0 2px 0;
+    }
+
+    .modal__buttons {
+        grid-area: buttons;
+        flex-direction: column;
+        margin-top: 0;
+    }
+
+    .modal__buttons-buy {
+        padding-left: 9px;
+        padding-right: 0;
+        width: 111px;
+    }
+
+    .modal__buttons-wishlist {
+        width: 111px;
+        margin: 10px 0 0 0;
+    }
+
+    .modal__buttons-wishlist svg {
+        display: none;
+    }
+
+    .modal__description-text {
+        width: 100%;
+        margin-top: 0px;
+    }
+
+    .modal__review {
+        margin-top: 29px;
+    }
+
+    .modal__review-comments {
+        margin-top: 0px;
+        flex-direction: column;
+    }
+
+    .modal__buttons-comment {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .modal__buttons-comment:last-child {
+        margin: 24px 0 0 0;
+    }
+
+    .modal__details {
+        grid-template-columns: auto;
+        margin-top: 32px;
+    }
+
+    .modal__details-text {
+        width: 100%;
+    }
+
+    .modal__details .modal__details-text:last-child {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        margin-bottom: 0;
+    }
+
+    .modal__images {
+        margin: 31px 0 0 0;
+        grid-template-areas: 
+            "big big"
+            "small small"
+            "small small";
+        grid-gap: 10px;
+        padding: 0;
+        grid-template-columns: calc(50% - 5px) calc(50% - 5px);
+        grid-template-rows: auto;
+    }
+
+    .modal__images .img-big {
+        width: 100%;
+        grid-area: big;
+    }
+
+    .modal__images .img-small {
+        grid-area: small;
+        width: 100%;
+    }
+
+    /* Disable scrollbar for mobile */
+    ::-webkit-scrollbar {
+        width: 0;
+        background: transparent;
+    }
 }
 
 /* Tablets */
@@ -140,6 +318,108 @@
 
     .card__content-info h2 {
         width: 220px;
+    }
+
+    /* Modal */
+    .modal__background {
+        display: block;
+        top: 120px;
+    }
+
+    .modal {
+        width: 100vw;
+        height: calc(100vh - 120px);
+        border-radius: 0px;
+    }
+
+    .modal__image {
+        border-radius: 0px;
+        width: 100%;
+    }
+
+    .modal__container {
+        /*padding: 0 21px 0 30px;*/
+        position: relative;
+        overflow-y: hidden;
+        width: 100%;
+        height: 100%;
+    }
+
+    .modal__container h1 {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-height: 164px;
+    }
+
+    .modal__platforms {
+        margin-top: 39px;
+    }
+
+    .modal-close {
+        width: 25px;
+        position: absolute;
+        top: 39px;
+        right: 30px;
+    }
+
+    .modal__wrap {
+        display: grid;
+        grid-template-rows: auto auto 40px auto;
+        grid-template-columns: 46% 54%;
+        grid-template-areas:
+        "content content"
+        "description description"
+        "review images"
+        "details images";
+        overflow-y: scroll;
+    }
+
+    .modal__content {
+        width: 100%;
+        margin-top: 26px;
+    }
+
+    .modal__info {
+        margin-top: 18px;
+    }
+
+    .modal__description {
+        margin-top: 17px;
+    }
+
+    .modal__description-text {
+        margin-top: 15px;
+        width: 570px;
+    }
+
+    .modal__review {
+        margin-top: 45px;
+    }
+
+    .modal__review-comments {
+        margin-top: 0px;
+    }
+
+    .modal__details{
+        margin-top: 53px;
+    }
+
+    .modal__details:nth-child(2) {
+        width: 106px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .modal__images {
+        margin: 45px 0 0 10px;
+        padding: 0;
+    }
+
+    /* Disable scrollbar for tablet */
+    ::-webkit-scrollbar {
+        width: 0;
+        background: transparent;
     }
 }
 
