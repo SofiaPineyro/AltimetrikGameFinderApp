@@ -311,13 +311,13 @@ input[type="radio"]:hover {
 }
 
 .main__show-row {
-    background-image: url("/GameFinder/img/icons/row.svg");
+    background-image: url("../img/icons/row.svg");
     background-repeat: no-repeat;
     background-position: center;
 }
 
 .main__show-column {
-    background-image: url("/GameFinder/img/icons/column.svg");
+    background-image: url("../img/icons/column.svg");
     background-repeat: no-repeat;
     background-position: center;
 }
