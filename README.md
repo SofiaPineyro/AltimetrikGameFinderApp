@@ -1,1 +1,13 @@
 # GameFinder
+## How to start the server
+### Requirements
+**Node.js ([Download](https://nodejs.org/en/download/))])**
+1. Download the code.
+2. Open the DataBase folder in the Integrated Terminal, and install the required dependencies with `npm install`. Then, start the server with `npm start`.
+3. The server will start at port 3000. If not, please close any other application that may be using port 3000 and restart the server.
+
+### Valid user
+```
+Mail: sofiapineyro@example.com
+Password: example1234
+```
