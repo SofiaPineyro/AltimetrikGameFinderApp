@@ -115,7 +115,7 @@ const getDescription = async function(id) {
     if(descriptionContainer) {
         try {
             let response = await fetch(
-                "https://api.rawg.io/api/games/${id}?key=a3bd3ba900174071b69fb84b6704339a"
+                `https://api.rawg.io/api/games/${id}?key=a3bd3ba900174071b69fb84b6704339a`
             );
             let details = await response.json();
             descriptionContainer.innerHTML = game.dateFormat.descriptionContainer;
@@ -137,7 +137,7 @@ const loadCards = function(games) {
             <button onclick="openCard(${game.id})" class="card-button">
                 <figure class="card__image">
                     <img alt="${game.name}" 
-                    src="${game.background_image || "../img/not-found.jpg"}"/>
+                    src="${game.background_image || "...\img\images\not-found.jpeg"}"/>
                 </figure>
                 <div class="card__content">
                     <div class="card__content-info">
@@ -185,11 +185,11 @@ const goHome = async function() {
     heading.innerHTML = "";
     subheading.innerHTML = "";
     let e = document.createElement("div");
-    e.classList.add("cards__list");
+    e.classList.add("loading");
     cardsContainer.appendChild(e);
     try {
         let response = await fetch(
-            "https://api.rawg.io/api/games?key=a3bd3ba900174071b69fb84b6704339a&page_size=21"
+            `https://api.rawg.io/api/games?key=a3bd3ba900174071b69fb84b6704339a&page_size=21`
         );
         let games = await response.json();
         cardsContainer.innerHTML = "";
@@ -206,3 +206,171 @@ const goHome = async function() {
 };
 
 window.addEventListener("load", goHome);
+
+const getGameImages = async function (slug) {
+    const imagesContainer = document.querySelector(".modal__images");
+    let e = document.createElement("div");
+    e.classList.add("loading");
+    imagesContainer.appendChild(e);
+    try {
+        console.log(slug);
+        let response = await fetch(
+            `https://api.rawg.io/api/games/${slug}/screenshots?key=a3bd3ba900174071b69fb84b6704339a`
+        );
+        let screenshots = await response.json();
+        imagesContainer.innerHTML = "";
+        for (let i = 0; i < 5; i++) {
+            if(i === 0) {
+                imagesContainer.insertAdjacentHTML("beforeend",
+                `<div class="modal__image-container">
+                    <img class="img-big" src=${
+                    screenshots.results[i].image || "...\img\images\not-found.jpeg"
+                    } />
+                </div>`
+                );
+            }
+            if (i === 4 && screenshots.results.length > 4) {
+                imagesContainer.insertAdjacentHTML("beforeend", 
+                `<div class="modal__image-container view-all">
+                    <img class="img-small" src=${screenshots.results[4].image} />
+                    <div class="img-view-all">
+                        <p>View all</p>
+                        <svg viewBox="0 0 9 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1.02823 1.875C0.460355 1.875 0 1.45527 0 0.9375C0 0.419733 0.460355 0 1.02823 0C1.59611 0 2.05647 0.419733 2.05647 0.9375C2.05647 1.45527 1.59611 1.875 1.02823 1.875ZM4.4557 1.87512C3.88783 1.87512 3.42747 1.45539 3.42747 0.937622C3.42747 0.419855 3.88783 0.00012207 4.4557 0.00012207C5.02358 0.00012207 5.48394 0.419855 5.48394 0.937622C5.48394 1.45539 5.02358 1.87512 4.4557 1.87512ZM6.85486 0.937622C6.85486 1.45539 7.31522 1.87512 7.8831 1.87512C8.45097 1.87512 8.91133 1.45539 8.91133 0.937622C8.91133 0.419855 8.45097 0.00012207 7.8831 0.00012207C7.31522 0.00012207 6.85486 0.419855 6.85486 0.937622Z" fill="white"/>
+                        </svg>
+                    </div>
+                </div>`
+              );
+            }
+            if (i > 0 && i < 4) {
+                imagesContainer.insertAdjacentHTML("beforeend",
+                `<div class="modal__img-container">
+                    <img class="img-small" src=${
+                    screenshots.results[i].image || "...\img\images\not-found.jpeg" } 
+                    />
+                </div>`
+                );
+            }
+        }
+    }
+    catch (e){
+        imagesContainer.innerHTML = "";
+        console.log(e)
+    }
+}
+
+const closeModal = function() {
+    document.querySelector(".modal__background").classList.add("hidden");
+}
+
+const openCard = async function (id) {
+    const cardsContainer = document.querySelector(".main__cards");
+    let modal = document.querySelector(".modal");
+    document.querySelector(".modal__background").classList.remove("hidden");
+    let e = document.createElement("div");
+    e.classList.add("loading");
+    cardsContainer.appendChild(e);
+    let response = await fetch(
+        `https://api.rawg.io/api/games/${id}?key=a3bd3ba900174071b69fb84b6704339a`
+    );
+    let game = await response.json();
+    modal.innerHTML = "";
+    modal.insertAdjacentHTML("beforeend", 
+        `<img class = "modal__image" src=${game.background_image} />
+        <div class="modal__container">
+            <div class="modal__platforms">
+                ${addPlatformIcon(game.parent_platforms)}
+            </div>
+            <h1>${game.name}</h1>
+            <button class="modal-close" onclick="closeModal()">
+                <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16 8C16 10.1217 15.1571 12.1566 13.6569 13.6569C12.1566 15.1571 10.1217 16 8 16C5.87827 16 3.84344 15.1571 2.34315 13.6569C0.842855 12.1566 0 10.1217 0 8C0 5.87827 0.842855 3.84344 2.34315 2.34315C3.84344 0.842855 5.87827 0 8 0C10.1217 0 12.1566 0.842855 13.6569 2.34315C15.1571 3.84344 16 5.87827 16 8ZM5.354 4.646C5.26011 4.55211 5.13278 4.49937 5 4.49937C4.86722 4.49937 4.73989 4.55211 4.646 4.646C4.55211 4.73989 4.49937 4.86722 4.49937 5C4.49937 5.13278 4.55211 5.26011 4.646 5.354L7.293 8L4.646 10.646C4.59951 10.6925 4.56264 10.7477 4.53748 10.8084C4.51232 10.8692 4.49937 10.9343 4.49937 11C4.49937 11.0657 4.51232 11.1308 4.53748 11.1916C4.56264 11.2523 4.59951 11.3075 4.646 11.354C4.73989 11.4479 4.86722 11.5006 5 11.5006C5.06574 11.5006 5.13084 11.4877 5.19158 11.4625C5.25232 11.4374 5.30751 11.4005 5.354 11.354L8 8.707L10.646 11.354C10.6925 11.4005 10.7477 11.4374 10.8084 11.4625C10.8692 11.4877 10.9343 11.5006 11 11.5006C11.0657 11.5006 11.1308 11.4877 11.1916 11.4625C11.2523 11.4374 11.3075 11.4005 11.354 11.354C11.4005 11.3075 11.4374 11.2523 11.4625 11.1916C11.4877 11.1308 11.5006 11.0657 11.5006 11C11.5006 10.9343 11.4877 10.8692 11.4625 10.8084C11.4374 10.7477 11.4005 10.6925 11.354 10.646L8.707 8L11.354 5.354C11.4005 5.30751 11.4374 5.25232 11.4625 5.19158C11.4877 5.13084 11.5006 5.06574 11.5006 5C11.5006 4.93426 11.4877 4.86916 11.4625 4.80842C11.4374 4.74768 11.4005 4.69249 11.354 4.646C11.3075 4.59951 11.2523 4.56264 11.1916 4.53748C11.1308 4.51232 11.0657 4.49937 11 4.49937C10.9343 4.49937 10.8692 4.51232 10.8084 4.53748C10.7477 4.56264 10.6925 4.59951 10.646 4.646L8 7.293L5.354 4.646Z"
+                    fill="white"/>
+                </svg>
+            </button>
+            <div class="modal__wrap">
+                <div class="modal__content">
+                    <div class="modal__info">
+                        <span>${dateFormat(game.released)}</span>
+                        <span><b>#1</b> TOP 2021</span>
+                        <span><b>#342</b> RPG</span>
+                    </div>
+                    <div class="modal__buttons">
+                        <button class="modal__buttons-buy">
+                            <span>Where to<br><b>BUY</b></span>
+                            <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M5.21094 7.82812H0.675781V5.26172H5.21094V0.691406H7.77734V5.26172H12.3125V7.82812H7.77734V12.3398H5.21094V7.82812Z"  fill="white"/>
+                            </svg>
+                        </button>
+                        <button class="modal__buttons-wishlist">
+                            <span>Add to<br><b>WISH LIST</b></span>
+                            <svg width="25" height="25" viewBox="0 0 25 25" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M4.6875 3.90625C4.6875 1.74889 6.43639 0 8.59375 0C10.7511 0 12.5 1.74889 12.5 3.90625C12.5 1.74889 14.2489 0 16.4062 0C18.5636 0 20.3125 1.74889 20.3125 3.90625V3.91563C20.3125 4.025 20.3125 4.3375 20.2531 4.6875H23.4375C24.3004 4.6875 25 5.38705 25 6.25V7.8125C25 8.67544 24.3004 9.375 23.4375 9.375H1.5625C0.699555 9.375 0 8.67544 0 7.8125V6.25C0 5.38705 0.699555 4.6875 1.5625 4.6875H4.74687C4.70561 4.43231 4.68574 4.17412 4.6875 3.91563V3.90625ZM6.35625 4.6875H10.9375V3.90625C10.9375 3.06891 10.4908 2.29517 9.76562 1.8765C9.04047 1.45783 8.14703 1.45783 7.42188 1.8765C6.69672 2.29517 6.25 3.06891 6.25 3.90625C6.25 4.03906 6.25313 4.33437 6.32031 4.57812C6.3297 4.61538 6.34171 4.65193 6.35625 4.6875ZM18.6437 4.6875H14.0625V3.90625C14.0625 2.61183 15.1118 1.5625 16.4062 1.5625C17.7007 1.5625 18.75 2.61183 18.75 3.90625C18.75 4.03906 18.7469 4.33437 18.6797 4.57812C18.6701 4.61533 18.6581 4.65187 18.6437 4.6875ZM23.4375 10.9375V22.6562C23.4375 23.9507 22.3882 25 21.0938 25H14.0625V10.9375H23.4375ZM1.5625 22.6562C1.5625 23.9507 2.61183 25 3.90625 25H10.9375V10.9375H1.5625V22.6562Z" fill="white"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="modal__description">
+                    <p class="modal__description-text">${game.description_raw}</p>
+                </div>
+                <div class="modal__review">
+                    <div class="modal__review-comments">
+                        <button class="modal__buttons-comment">
+                            <span>Leave a comment</span>
+                            <svg width="16" height="15" viewBox="0 0 16 15" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8 14C12.418 14 16 10.866 16 7C16 3.134 12.418 0 8 0C3.582 0 0 3.134 0 7C0 8.76 0.744 10.37 1.969 11.6C1.873 12.616 1.553 13.73 1.199 14.566C1.12 14.752 1.272 14.96 1.472 14.928C3.728 14.558 5.069 13.99 5.653 13.694C6.41859 13.8982 7.20765 14.0011 8 14ZM4 6C4.55228 6 5 6.44772 5 7C5 7.55228 4.55228 8 4 8C3.44772 8 3 7.55228 3 7C3 6.44772 3.44772 6 4 6ZM9 7C9 6.44772 8.55229 6 8 6C7.44772 6 7 6.44772 7 7C7 7.55228 7.44772 8 8 8C8.55229 8 9 7.55228 9 7ZM13 7C13 7.55228 12.5523 8 12 8C11.4477 8 11 7.55228 11 7C11 6.44772 11.4477 6 12 6C12.5523 6 13 6.44772 13 7Z" fill="white"/>
+                            </svg>
+                        </button>
+                        <button class="modal__buttons-comment">Write a review
+                            <svg width="13" height="13" viewBox="0 0 13 13" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M5.21094 7.82812H0.675781V5.26172H5.21094V0.691406H7.77734V5.26172H12.3125V7.82812H7.77734V12.3398H5.21094V7.82812Z" fill="white"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="modal__details">
+                    <div class="modal__details-text">
+                        <p>Platforms</p>
+                        <a class="modal__link">${game.parent_platforms.map((platforms) => {
+                            return " " + platforms.platform.name;    
+                        })}</a>
+                    </div>
+                    <div class="modal__details-text">
+                        <p>Genre</p>
+                        <a class="modal__link">${game.genres?
+                            game.genres.map((genre) => {
+                                return " " + genre.name;
+                            })
+                            : "None"
+                        }</a>
+                    </div>
+                    <div class="modal__details-text">
+                        <p>Release date</p>
+                        <p>${dateFormat(game.released)}</p>
+                    </div>
+                    <div class="modal__details-text">
+                        <p>Developer</p>
+                        <a class="modal__link">${game.developers ? game.developers[0].name : "None"}</a>
+                    </div>
+                    <div class="modal__details-text">
+                        <p>Pubisher</p>
+                        <a class="modal__link">${game.publishers ? game.publishers.map((publisher) => {
+                            return " " + publisher.name;})
+                            : "None"}</a>
+                    </div>
+                    <div class="modal__details-text">
+                        <p>Age rating</p>
+                        <p>${game.esrb_rating ? game.esrb_rating.name : "None"}</p>
+                    </div>
+                    <div class="modal__details-text">
+                        <p>Website</p>
+                        <a class="modal__link">${game.website ? game.website : "None"}</a>
+                    </div>
+                </div>
+                <div class="modal__images">
+                </div>
+            </div>
+        </div>`
+    );
+    getGameImages(game.slug);
+};
