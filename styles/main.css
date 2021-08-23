@@ -747,3 +747,26 @@ input[type="radio"]:hover {
     width: 13px;
     height: 3px;
 }
+
+/*Search*/
+
+.search__history {
+    padding-left: 39px;
+}
+
+.search__history li {
+    color: var(--white);
+    margin-bottom: 24px;
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 30px;
+    cursor: pointer;
+}
+
+.search__history li:hover {
+    color: var(--green);
+}
+
+.search__history li:active {
+    color: var(--dark-green);
+}

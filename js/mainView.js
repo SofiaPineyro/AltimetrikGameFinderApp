@@ -18,6 +18,18 @@ const android = `<svg id="android" viewBox="0 0 45 50" xmlns="http://www.w3.org/
 // const heading = document.querySelector(".main__heading");
 // const subheading = document.querySelector(".main__subheading");
 
+//Store last searches from Local Storage
+let pastSearches = [];
+
+window.addEventListener("load", function() {
+    let searchInput = document.querySelector(".header__searchbar-input");
+    searchInput.addEventListener("keypress", function(e){
+    if (e.key === "Enter") {
+        search(searchInput.value);
+    }
+})
+})
+
 const showMenu = function() {
     const sideMenu = document.querySelector("aside");
     sideMenu.classList.add("show-flex");
@@ -137,7 +149,7 @@ const loadCards = function(games) {
             <button onclick="openCard(${game.id})" class="card-button">
                 <figure class="card__image">
                     <img alt="${game.name}" 
-                    src="${game.background_image || "...\img\images\not-found.jpeg"}"/>
+                    src="${game.background_image || "...\img\images\not-found.jpeg"}" />
                 </figure>
                 <div class="card__content">
                     <div class="card__content-info">
@@ -374,3 +386,62 @@ const openCard = async function (id) {
     );
     getGameImages(game.slug);
 };
+
+// Add a list with the last searches
+const lastSearches = function(){
+    const cardsContainer = document.querySelector(".main__cards");
+    const heading = document.querySelector(".main__heading");
+    const subheading = document.querySelector(".main__subheading");
+    closeMenu();
+    let localStorageSearches = localStorage.getItem("lastSearches");
+    if(localStorageSearches) {
+        let searchesList = JSON.parse(localStorageSearches).reverse();
+        heading.innerHTML = "Last searches";
+        subheading.innerHTML = "Based on your last searches";
+        cardsContainer.innerHTML = `<li><ul class="search__history">
+        ${searchesList.map((searched) => 
+            `<li onclick="search('${searched}')">
+            <a>${searched}</a></li>`
+            ).join(" ")}</ul></li>`;
+    } else {
+        cardsContainer.innerHTML = "";
+        subheading.innerHTML = "You have no recent searches";
+    }
+};    
+
+const search = async function(searched) {
+    const cardsContainer = document.querySelector(".main__cards");
+    const heading = document.querySelector(".main__heading");
+    const subheading = document.querySelector(".main__subheading");
+
+    let e = document.createElement("div");
+    e.classList.add("loading");
+    cardsContainer.appendChild(e);
+    heading.innerHTML = "Search results";
+    subheading.innerHTML = "";
+    try {
+        let response = await fetch(`https://api.rawg.io/api/games?page_size=21&search=${searched}&key=a3bd3ba900174071b69fb84b6704339a`);
+        let games = await response.json();
+        //Store search history
+        pastSearches.push(searched);
+        localStorage.setItem("lastSearches", JSON.stringify(pastSearches));    
+        cardsContainer.innerHTML="";
+        if(games.results.length > 0) {
+            subheading.innerHTML = `Search results for: <b>"${searched}</b>`;
+            //Sort the results by ratings_count
+            games.results.sort(function(a,b) {
+                return b.ratings_count - a.ratings_count;
+            });
+            loadCards(games);            
+        }        
+        else { 
+            heading.innerHTML = "No results :(";
+            subheading.innerHTML = "Please try searching for another game."
+        }
+    } catch (e) {
+        cardsContainer.innerHTML="";
+        heading.innerHTML = "Oh no!"
+        subheading.innerHTML = "Sorry, something went wrong. Please try again later.";
+        console.log(e);
+    }
+}
