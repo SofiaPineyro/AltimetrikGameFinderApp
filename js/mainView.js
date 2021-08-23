@@ -22,11 +22,27 @@ const android = `<svg id="android" viewBox="0 0 45 50" xmlns="http://www.w3.org/
 let pastSearches = [];
 
 window.addEventListener("load", function() {
-    let searchInput = document.querySelector(".header__searchbar-input");
+    const searchInput = document.querySelector(".header__searchbar-input");
+    const searchbarContainer = document.querySelector(".header__searchbar");
+    const searchbarSuggestions = document.querySelector(".header__suggestions");
     searchInput.addEventListener("keypress", function(e){
     if (e.key === "Enter") {
         search(searchInput.value);
     }
+    //Display suggestions
+    searchInput.addEventListener("click", function() {
+        searchbarSuggestions.classList.remove("hidden");
+        searchbarContainer.classList.add("suggestions");
+    })
+    searchInput.addEventListener("focus", function() {
+        searchbarSuggestions.classList.remove("hidden");
+        searchbarContainer.classList.add("suggestions");
+    })
+    searchInput.addEventListener("blur", function() {
+        searchbarSuggestions.classList.add("hidden");
+        searchbarContainer.classList.remove("suggestions");
+    })
+    
 })
 })
 
@@ -52,10 +68,19 @@ window.addEventListener("click", function(e) {
     }
 });
 
+const showSearchInput = function() {
+    const header = document.querySelector("header");
+    if(!header.classList.contains("expand")) {
+        header.classList.add("expand");
+    } else {
+        header.classList.remove("expand");
+    }
+};
+
 const logout = function() {
     window.location.href = "login.html";
     document.cookie = "authToken=" + "";
-}
+};
 
 const rowView = function() {
     const cards = document.querySelectorAll(".main__card");
