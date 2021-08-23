@@ -306,16 +306,36 @@ label {
     align-items: center;
     border-radius: 8px 0px 0px 8px;  
 }
-/* 
-#login__carousel {
+
+/* Carousel */
+
+.login__carousel {
     width: 453 px;
+    height: 660px;
     display: flex;
     justify-content: center;
     margin: 0 auto;
     background-color: #00aced;
     border-radius: 0px 10px 10px 0px;
     overflow: hidden;
-} */
+} 
+
+.carousel__controls {
+    height: 660px;
+    position: absolute;
+    display: flex;
+}
+
+.carousel-button {
+    align-self: flex-end;
+    display: inline-block;
+    margin: 7px 0 48px 8px;
+    width: 7px;
+    height: 7px;
+    border-radius: 100%;
+    background-color: rgba(242, 242, 242, 0.56);
+    transition: transform 0.1s;
+}
 
 /* -------------------- Errors and hidden --------------------*/
 

@@ -130,6 +130,7 @@ header {
     justify-content: space-between;
     line-height: 19px;
     margin-right: 32px;
+    cursor: pointer;
 }
 
 .header__user-photo {

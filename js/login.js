@@ -68,9 +68,9 @@ function validFormatEmail(email) {
 const login = async function(email,password) {
     try {
         fetch("http://localhost:3000/login", {
-            method: "GET",
+            method: "POST",
             headers: {
-                Accept: "application/json",
+                "Accept": "application/json",
                 "Content-Type": "application/json",
             },
             body: JSON.stringify ({
@@ -86,7 +86,7 @@ const login = async function(email,password) {
             document.querySelector(".snackbar").classList.add("snackbar__show");
             document.querySelector(".snackbar").classList.add("success");
             document.getElementById("snackbar-text").innerHTML = "Success!";
-            //window.location.href = "main.html";
+            window.location.href = "main.html";
         }
         if(response.status === 400) {
             setError();
